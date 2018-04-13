@@ -18,14 +18,6 @@ from keras import backend as K
 from keras.utils.data_utils import get_file
 from keras.utils.layer_utils import convert_all_kernels_in_model
 
-"""
-Neural Style Transfer with Keras 2.0.5
-
-Based on:
-https://github.com/fchollet/keras/blob/master/examples/neural_style_transfer.py
-
------------------------------------------------------------------------------------------------------------------------
-"""
 
 THEANO_WEIGHTS_PATH_NO_TOP = 'https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_th_dim_ordering_th_kernels_notop.h5'
 TF_WEIGHTS_PATH_NO_TOP = 'https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5'
@@ -175,3 +167,64 @@ aspect_ratio = 0
 
 assert args.content_loss_type in [0, 1, 2], "Content Loss Type must be one of 0, 1 or 2"
 
+
+# util function to open, resize and format pictures into appropriate tensors
+def preprocess_image(image_path, load_dims=False, read_mode="color"):
+    global img_width, img_height, img_WIDTH, img_HEIGHT, aspect_ratio
+
+    mode = "RGB" if read_mode == "color" else "L"
+    img = imread(image_path, mode=mode)  # Prevents crashes due to PNG images (ARGB)
+
+    if mode == "L":
+        # Expand the 1 channel grayscale to 3 channel grayscale image
+        temp = np.zeros(img.shape + (3,), dtype=np.uint8)
+        temp[:, :, 0] = img
+        temp[:, :, 1] = img.copy()
+        temp[:, :, 2] = img.copy()
+
+        img = temp
+
+    if load_dims:
+        img_WIDTH = img.shape[0]
+        img_HEIGHT = img.shape[1]
+        aspect_ratio = float(img_HEIGHT) / img_WIDTH
+
+        img_width = args.img_size
+        if maintain_aspect_ratio:
+            img_height = int(img_width * aspect_ratio)
+        else:
+            img_height = args.img_size
+
+    img = imresize(img, (img_width, img_height)).astype('float32')
+
+    # RGB -> BGR
+    img = img[:, :, ::-1]
+
+    img[:, :, 0] -= 103.939
+    img[:, :, 1] -= 116.779
+    img[:, :, 2] -= 123.68
+
+    if K.image_dim_ordering() == "th":
+        img = img.transpose((2, 0, 1)).astype('float32')
+
+    img = np.expand_dims(img, axis=0)
+    return img
+
+
+# util function to convert a tensor into a valid image
+def deprocess_image(x):
+    if K.image_dim_ordering() == "th":
+        x = x.reshape((3, img_width, img_height))
+        x = x.transpose((1, 2, 0))
+    else:
+        x = x.reshape((img_width, img_height, 3))
+
+    x[:, :, 0] = x[:, :, 0] + 103.939
+    x[:, :, 1] = x[:, :, 1] + 116.779
+    x[:, :, 2] = x[:, :, 2] + 123.68
+
+    # BGR -> RGB
+    x = x[:, :, ::-1]
+
+    x = np.clip(x, 0, 255).astype('uint8')
+    return x
