@@ -18,14 +18,6 @@ from keras import backend as K
 from keras.utils.data_utils import get_file
 from keras.utils.layer_utils import convert_all_kernels_in_model
 
-"""
-Neural Style Transfer with Keras 2.0.5
-
-Based on:
-https://github.com/fchollet/keras/blob/master/examples/neural_style_transfer.py
-
------------------------------------------------------------------------------------------------------------------------
-"""
 
 THEANO_WEIGHTS_PATH_NO_TOP = 'https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_th_dim_ordering_th_kernels_notop.h5'
 TF_WEIGHTS_PATH_NO_TOP = 'https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5'
