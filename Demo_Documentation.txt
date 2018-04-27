@@ -1,0 +1,15 @@
+Network.py
+
+Main transfer algorithm using VGG16, Keras.
+
+python network.py "../path_to_content_image" "../path_to_style_image" "../path_to_result_image"
+
+Multiple parameters can be modified:
+  --pool_type "ave/max" : Pooling type. Average Pooling generates smoother image.
+  --preserve_color "True/False" : Whether to preserve the color of original image.
+  --content_layer "conv*_*" : Select the content layer.
+  --style_masks "../path_to_mask_image" : Using mask for masking certain regions of an image.
+  --num_iter "*" : Number of iterations. Default is 10.
+  --model "vgg*" : Model choice of VGG16 and VGG19.
+  --content_weight "*" : Weight of content image. Default is 0.025.
+  --style_weight "*" : Weight of style image. Default is 1.
