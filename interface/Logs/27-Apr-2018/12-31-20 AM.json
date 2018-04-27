@@ -1,0 +1,8 @@
+{
+  "Time": "27-Apr-2018 00:31:20",
+  "ScriptType": "INetwork.py",
+  "ContentFilePath": "D:\\GitHub\\Final_Project_INFO7374\\images\\inputs\\content\\ancient_city.jpg",
+  "StyleFilePath": "\"D:\\GitHub\\Final_Project_INFO7374\\images\\inputs\\style\\blue_swirls.jpg\" ",
+  "OutputFilePrefix": "D:\\GitHub\\Final_Project_INFO7374\\images\\output\\test_ancient_city",
+  "ParameterList": "\"D:\\GitHub\\Final_Project_INFO7374\\images\\inputs\\content\\ancient_city.jpg\" \"D:\\GitHub\\Final_Project_INFO7374\\images\\inputs\\style\\blue_swirls.jpg\" \"D:\\GitHub\\Final_Project_INFO7374\\images\\output\\test_ancient_city\" --content_mask \"D:\\GitHub\\Final_Project_INFO7374\\images\\inputs\\mask\\ancient-city.jpg\" --image_size 400 --content_weight 0.025 --style_weight 1.0 --total_variation_weight 8.5E-05 --style_scale 1 --num_iter 10 --rescale_image \"False\" --rescale_method \"bicubic\" --maintain_aspect_ratio \"True\" --content_layer \"conv5_2\" --init_image \"content\" --pool_type \"max\" --preserve_color \"False\" --min_improvement 0 --model \"vgg16\" --content_loss_type 0"
+}
