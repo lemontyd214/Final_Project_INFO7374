@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a532aa93-3d63-408f-8eff-f6c81dbf9043" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/~$Report.docx" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Network.py" afterPath="$PROJECT_DIR$/Network.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,35 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Network.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Network.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Network.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Final_Project_INFO7374/Network.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="176" column="0" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mask_transfer.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mask_transfer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-292">
+              <caret line="549" column="5" lean-forward="false" selection-start-line="549" selection-start-column="5" selection-end-line="549" selection-end-column="5" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -63,7 +40,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Network.py" />
-        <option value="$PROJECT_DIR$/../Final_Project_INFO7374/Network.py" />
+        <option value="$PROJECT_DIR$/Network.py" />
       </list>
     </option>
   </component>
@@ -143,6 +120,16 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Network.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Network.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
           <folding>
@@ -151,7 +138,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Final_Project_INFO7374/Network.py">
+    <entry file="file://$PROJECT_DIR$/Network.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3154">
           <caret line="176" column="0" lean-forward="true" selection-start-line="176" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
@@ -181,25 +168,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Final_Project_INFO7374/Network.py">
+    <entry file="file://$PROJECT_DIR$/Network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="176" column="0" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
+        <state relative-caret-position="-292">
+          <caret line="549" column="5" lean-forward="false" selection-start-line="549" selection-start-column="5" selection-end-line="549" selection-end-column="5" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mask_transfer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mask_transfer.py" />
   </component>
 </project>

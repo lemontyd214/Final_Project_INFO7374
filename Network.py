@@ -25,7 +25,7 @@ TF_WEIGHTS_PATH_NO_TOP = 'https://github.com/fchollet/deep-learning-models/relea
 TH_19_WEIGHTS_PATH_NO_TOP = 'https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg19_weights_th_dim_ordering_th_kernels_notop.h5'
 TF_19_WEIGHTS_PATH_NO_TOP = 'https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5'
 
-
+##### Reference: https://docs.python.org/3/library/argparse.html
 parser = argparse.ArgumentParser(description='Neural style transfer with Keras.')
 parser.add_argument('base_image_path', metavar='base', type=str,
                     help='Path to the image to transform.')
@@ -131,7 +131,7 @@ rescale_image = str_to_bool(args.rescale_image)
 maintain_aspect_ratio = str_to_bool(args.maintain_aspect_ratio)
 preserve_color = str_to_bool(args.color)
 
-# these are the weights of the different loss components
+# weights of the different loss components
 content_weight = args.content_weight
 total_variation_weight = args.tv_weight
 
@@ -169,6 +169,7 @@ assert args.content_loss_type in [0, 1, 2], "Content Loss Type must be one of 0,
 
 
 # util function to open, resize and format pictures into appropriate tensors
+##### Reference: https://www.learnopencv.com/keras-tutorial-using-pre-trained-imagenet-models/
 def preprocess_image(image_path, load_dims=False, read_mode="color"):
     global img_width, img_height, img_WIDTH, img_HEIGHT, aspect_ratio
 
@@ -203,7 +204,7 @@ def preprocess_image(image_path, load_dims=False, read_mode="color"):
     img[:, :, 0] -= 103.939
     img[:, :, 1] -= 116.779
     img[:, :, 2] -= 123.68
-
+##### Mean is an array of three elements obtained by the average of R, G, B pixels of all images obtained from ImageNet.
     if K.image_dim_ordering() == "th":
         img = img.transpose((2, 0, 1)).astype('float32')
 
@@ -231,6 +232,8 @@ def deprocess_image(x):
 
 
 # util function to preserve image color
+##### Reference: http://www.roman10.net/2011/08/18/ycbcr-color-spacean-intro-and-its-applications/
+##### Reference: https://makarandtapaswi.wordpress.com/2009/07/20/why-the-rgb-to-ycbcr/
 def original_color_transform(content, generated, mask=None):
     generated = fromimage(toimage(generated, mode='RGB'), mode='YCbCr')  # Convert to YCbCr color space
 
@@ -318,6 +321,7 @@ else:
 ip = Input(tensor=input_tensor, batch_shape=shape)
 
 # build the VGG16 network with our 3 images as input
+##### Reference: https://github.com/keras-team/keras/blob/master/examples/neural_style_transfer.py
 x = Convolution2D(64, (3, 3), activation='relu', name='conv1_1', padding='same')(ip)
 x = Convolution2D(64, (3, 3), activation='relu', name='conv1_2', padding='same')(x)
 x = pooling_func(x)
@@ -380,9 +384,8 @@ outputs_dict = dict([(layer.name, layer.output) for layer in model.layers])
 shape_dict = dict([(layer.name, layer.output_shape) for layer in model.layers])
 
 # compute the neural style loss
-# first we need to define 4 util functions
-
 # the gram matrix of an image tensor (feature-wise outer product)
+##### Reference: http://scikit-learn.org/stable/modules/svm.html
 def gram_matrix(x):
     assert K.ndim(x) == 3
     if K.image_dim_ordering() == "th":
@@ -398,6 +401,7 @@ def gram_matrix(x):
 # It is based on the gram matrices (which capture style) of
 # feature maps from the style reference image
 # and from the generated image
+##### Reference: http://arxiv.org/abs/1508.06576
 def style_loss(style, combination, mask_path=None, nb_channels=None):
     assert K.ndim(style) == 3
     assert K.ndim(combination) == 3
@@ -543,7 +547,7 @@ evaluator = Evaluator()
 
 # run scipy-based optimization (L-BFGS) over the pixels of the generated image
 # so as to minimize the neural style loss
-
+##### Reference: https://stats.stackexchange.com/questions/17436/logistic-regression-with-lbfgs-solver
 
 if "content" in args.init_image or "gray" in args.init_image:
     x = preprocess_image(base_image_path, True, read_mode=read_mode)
