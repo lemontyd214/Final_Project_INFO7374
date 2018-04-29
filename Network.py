@@ -250,7 +250,7 @@ def original_color_transform(content, generated, mask=None):
     generated = fromimage(toimage(generated, mode='YCbCr'), mode='RGB')  # Convert to RGB color space
     return generated
 
-
+##### Reference: http://cs231n.stanford.edu/reports/2017/pdfs/416.pdf
 def load_mask(mask_path, shape, return_mask_img=False):
     if K.image_dim_ordering() == "th":
         _, channels, width, height = shape
@@ -289,14 +289,14 @@ def pooling_func(x):
         return MaxPooling2D((2, 2), strides=(2, 2))(x)
 
 
-# get tensor representations of our images
+# get tensor representations of images
 base_image = K.variable(preprocess_image(base_image_path, True, read_mode=read_mode))
 
 style_reference_images = []
 for style_path in style_image_paths:
     style_reference_images.append(K.variable(preprocess_image(style_path)))
 
-# this will contain our generated image
+# this will contain generated image
 if K.image_dim_ordering() == 'th':
     combination_image = K.placeholder((1, 3, img_width, img_height))
 else:
@@ -428,6 +428,7 @@ def style_loss(style, combination, mask_path=None, nb_channels=None):
 # an auxiliary loss function
 # designed to maintain the "content" of the
 # base image in the generated image
+##### Reference: https://shafeentejani.github.io/2016-12-27/style-transfer/
 def content_loss(base, combination):
     channel_dim = 0 if K.image_dim_ordering() == "th" else -1
 
